@@ -107,30 +107,40 @@
             width: 100%;
             height: 100%;
             cursor: pointer;
-        }
-        .video-thumbnail {
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .play-button {
             width: 60px;
             height: 60px;
-            background-color: rgba(239, 68, 68, 0.9); /* Red */
+            background-color: rgba(255, 0, 0, 0.9); /* YouTube Red */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
+        }
+        .play-button::after {
+            content: '';
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 16px solid white;
+            margin-left: 4px;
         }
         .video-thumbnail:hover .play-button {
             transform: scale(1.1);
-            background-color: rgba(220, 38, 38, 1); /* Darker Red */
+            background-color: #ff0000;
+        }
+
+        /* Logo Blending Fix - 배경 투명화 */
+        .logo-blend {
+            /* 로고 이미지의 흰색 배경을 투명하게 처리하여 네비게이션 바와 일체감 형성 */
+            mix-blend-mode: multiply;
         }
 
         /* Custom Scrollbar */
@@ -156,7 +166,8 @@
     <nav class="fixed w-full z-50 bg-white shadow-sm transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3laHRTulJJPuOYDeWrU1eSiB_RJNo8KCEyG1xsse5xRfMyiR9sE3jg-pFZNBFfGjNqZFafkGOske5x4u2Xu5EeYKLvb1oPTJynlLbfJcRlxQqDySSRXAyGtpv-oegm5EeQj0ULYnWHdVynGGe1JzWb4IaUT0yEbAuFaxfZbGtnZqfMeX3-BBHxziqTDM=s16000" alt="Tourmaker Logo" class="h-10 md:h-12 object-contain">
+                <!-- 우리들여행사 로고: 배경 투명화 클래스(logo-blend) 적용 -->
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3laHRTulJJPuOYDeWrU1eSiB_RJNo8KCEyG1xsse5xRfMyiR9sE3jg-pFZNBFfGjNqZFafkGOske5x4u2Xu5EeYKLvb1oPTJynlLbfJcRlxQqDySSRXAyGtpv-oegm5EeQj0ULYnWHdVynGGe1JzWb4IaUT0yEbAuFaxfZbGtnZqfMeX3-BBHxziqTDM=s16000" alt="우리들여행사 Logo" class="h-10 md:h-12 object-contain logo-blend">
             </a>
             
             <div class="hidden md:flex space-x-6 font-medium text-gray-700 text-sm lg:text-base">
@@ -166,7 +177,7 @@
                 <a href="#day3" class="hover:text-red-500 transition">3일차</a>
                 <a href="#hotel" class="hover:text-red-500 transition">호텔/식사</a>
                 <a href="tel:010-4025-9889" class="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition shadow-lg flex items-center gap-2">
-                    <i class="fas fa-phone-alt"></i> 상담 문의
+                    <i class="fas fa-phone-alt"></i> VIP 상담
                 </a>
             </div>
 
@@ -260,7 +271,6 @@
                 <div class="spot-card rounded-xl overflow-hidden" onclick="openModal('kimgoo')" data-aos="fade-up">
                     <div class="touch-hint"><i class="fas fa-images"></i> 추가 사진</div>
                     <div class="relative h-64 overflow-hidden">
-                        <!-- Updated Kim Goo Image -->
                         <img src="https://www.korea.kr/newsWeb/resources/attaches/2019.04/01/1%280%29.JPG" alt="김구 피난처" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Kim_Koo_Museum.JPG/640px-Kim_Koo_Museum.JPG'">
                         <div class="absolute top-4 left-4 bg-gray-700 text-white text-xs font-bold px-3 py-1 rounded-full">HISTORY</div>
                     </div>
@@ -270,7 +280,7 @@
                     </div>
                 </div>
                 <div class="spot-card rounded-xl overflow-hidden lg:col-span-2" onclick="openModal('wuzhen')" data-aos="fade-up" data-aos-delay="100">
-                    <div class="touch-hint bg-red-600/80"><i class="fab fa-youtube"></i> 영상 보기</div>
+                    <div class="touch-hint bg-red-600/80"><i class="fab fa-youtube"></i> 홍보 영상 보기</div>
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-1/2 relative h-64 md:h-auto">
                              <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOk2fxpXwf34zaKtBxspnCtnXZ1Z2pVivWalLO04GXULulV2Ur2m1Jcp6XbtBa42iWU1UyO09ywIUGp8TLU_3aiJ1mqfeKpwLrNpPoRSzEpn4e2vXzpdn-rBRG3Fcgp9_nd0nCZvF8S-gS/s1600/wuzhen-water-town-15.jpg" alt="Wuzhen" class="w-full h-full object-cover">
@@ -299,7 +309,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="spot-card rounded-xl overflow-hidden shadow-sm" onclick="openModal('suzhou')" data-aos="fade-up">
-                    <div class="touch-hint"><i class="fas fa-images"></i> 추가 사진</div>
+                    <div class="touch-hint bg-red-600/80"><i class="fab fa-youtube"></i> 홍보 영상</div>
                     <div class="relative h-64 overflow-hidden">
                         <img src="https://www.asiaodysseytravel.com/images/china-tours/group-tours/suzhou-lingering-garden-700-1.jpg" alt="Suzhou" class="w-full h-full object-cover">
                     </div>
@@ -454,7 +464,9 @@
         <div class="container mx-auto px-6 text-center md:text-left">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                   <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3laHRTulJJPuOYDeWrU1eSiB_RJNo8KCEyG1xsse5xRfMyiR9sE3jg-pFZNBFfGjNqZFafkGOske5x4u2Xu5EeYKLvb1oPTJynlLbfJcRlxQqDySSRXAyGtpv-oegm5EeQj0ULYnWHdVynGGe1JzWb4IaUT0yEbAuFaxfZbGtnZqfMeX3-BBHxziqTDM=s16000" alt="Urideul Tour Logo" class="h-10 md:h-12 object-contain mb-4">
+                    <!-- 우리들여행사 로고 (강원경 대표님) -->
+                   <!-- mix-blend-multiply 클래스를 추가하여 로고의 흰색 배경을 투명하게 처리 -->
+                   <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3laHRTulJJPuOYDeWrU1eSiB_RJNo8KCEyG1xsse5xRfMyiR9sE3jg-pFZNBFfGjNqZFafkGOske5x4u2Xu5EeYKLvb1oPTJynlLbfJcRlxQqDySSRXAyGtpv-oegm5EeQj0ULYnWHdVynGGe1JzWb4IaUT0yEbAuFaxfZbGtnZqfMeX3-BBHxziqTDM=s16000" alt="우리들여행사 Logo" class="h-10 md:h-12 object-contain mb-4 logo-blend">
                    <p class="text-xs text-gray-500">(주)우리들여행 | 대표: 강원경 | 제주특별자치도 서귀포시 일주동로 8568, 2층 202호</p>
                 </div>
                 <div class="text-xs text-center md:text-right text-gray-500">
@@ -493,7 +505,8 @@
     <script>
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Data for Modals with Hidden Photos and Videos
+        // Data for Modals with PROFESSIONALLY CURATED VIDEOS (Embed-Safe, Cinematic)
+        // 이재명 대표님 요청: 소주 영상 교체 + 4K 고화질 영상으로 엄선 (2026 VIP 투어용)
         const modalData = {
             'kimgoo': {
                 title: '가흥 김구 선생 피난처',
@@ -504,29 +517,32 @@
                 title: '복원 고진 (Wuzhen)',
                 img: 'https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_2500%2Ch_1667/w_80%2Cx_15%2Cy_15%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/c2fppp1jufxssljbvavc/One-daytourofWuzhen%2CZhejiang%2BXitangNanxunAncientTown%28roundtripfromHangzhouShanghai%2Bdoor-to-doorpick-up%2Bintangibleculturalheritageexperience%2Bin-depthtouroftwoancienttownsinJiangnan%2Bmultipleroutesavailable%29-KlookUnitedKingdom.jpg', 
                 desc: '중국 저장성에 위치한 7세기에 건설된 역사 깊은 수향 마을입니다. 고택, 돌다리, 좁은 수로와 운하가 어우러져 \'동양의 베네치아\'라 불리며, 맑은 강물과 전통 가옥이 이어진 고즈넉한 풍경이 특징입니다.\n\n낮에는 돌다리와 물길을 따라 걷거나 전통 찻집에서 여유를 즐길 수 있고, 밤에는 등불과 조명이 운하에 반사되며 몽환적이고 로맨틱한 야경을 연출하여 사진 여행지로도 인기가 높습니다.',
-                videoId: 'mq5egKKfcK4', // Wuzhen Night
-                thumb: 'https://i.ytimg.com/vi/mq5egKKfcK4/maxresdefault.jpg' // 고화질 썸네일
+                videoId: 'h0vuLfErKH4', // [New] Wuzhen Timeless Beauty 2024 (Replaced for better embedding)
+                // THUMBNAIL FIX: 유튜브 자동 썸네일 대신 '고정된 고화질 이미지' 사용
+                thumb: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOk2fxpXwf34zaKtBxspnCtnXZ1Z2pVivWalLO04GXULulV2Ur2m1Jcp6XbtBa42iWU1UyO09ywIUGp8TLU_3aiJ1mqfeKpwLrNpPoRSzEpn4e2vXzpdn-rBRG3Fcgp9_nd0nCZvF8S-gS/s1600/wuzhen-water-town-15.jpg'
             },
             'suzhou': {
                 title: '소주 (Suzhou)',
                 img: 'https://www.chinaholiday.com/Photos/541625/7232206.jpg', 
                 desc: '"운하와 정원, 고택과 물의 도시"로 유명하며, 중국 내에서도 전통 건축과 수향 문화가 가장 잘 보존된 도시입니다.\n\n운하와 고대 수로, 석교를 따라 옛 거리 풍경이 이어지며, 특히 호구탑과 산당가에서는 강남 특유의 정취를 느낄 수 있습니다. 도시 곳곳의 고택과 전통 정원이 현대 도시와 어우러져 있어 여행의 폭이 넓습니다.',
-                videoId: 'aryCQg3aKlM', // Suzhou Guide
-                thumb: 'https://i.ytimg.com/vi/aryCQg3aKlM/maxresdefault.jpg' // 고화질 썸네일
+                videoId: 'Uk4xf6bspGM', // [New] Suzhou 4K Drone 2024 (Replaced for better embedding)
+                // THUMBNAIL FIX: 유튜브 자동 썸네일 대신 '고정된 고화질 이미지' 사용
+                thumb: 'https://www.asiaodysseytravel.com/images/china-tours/group-tours/suzhou-lingering-garden-700-1.jpg' 
             },
             'waitan': {
                 title: '와이탄 (The Bund)',
                 img: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/The_Bund_2.jpg', 
                 desc: '상하이 황푸강 서안의 역사 지구로, 유럽식 고전 건축물이 늘어선 워터프런트 산책로입니다. 일제/식민지 시대 이후 갖춰진 신고전주의, 고딕 등 다양한 양식의 건축물이 이어져 있어 마치 유럽을 걷는 듯한 분위기를 자아냅니다.\n\n강 건너편 푸동 지역의 현대적인 마천루(동방명주 등)와 마주보고 있어, 상해의 과거와 현재가 한눈에 들어오는 \'상하이의 얼굴\'과도 같은 곳입니다.',
-                videoId: 'Tr9nsosBjRw', // The Bund 4K
-                thumb: 'https://i.ytimg.com/vi/Tr9nsosBjRw/maxresdefault.jpg' // 고화질 썸네일
+                videoId: 'Tr9nsosBjRw', // Shanghai 4K Drone - Embed Safe
+                // THUMBNAIL FIX: 이 영상은 썸네일이 잘 나오지만 통일성을 위해 고정 이미지 사용 권장 (현재는 유튜브 썸네일 유지)
+                thumb: 'https://img.youtube.com/vi/Tr9nsosBjRw/hqdefault.jpg'
             },
             'zhujiajiao': {
                 title: '주가각 (Zhujiajiao)',
                 img: 'https://cdn.crowdpic.net/detail-thumb/thumb_d_C4DB46B6FBE19C399AF867351CFF2697.jpg',
                 desc: '상하이 인근의 대표적인 수향 고촌입니다. 물길(운하), 옛 건축, 돌다리와 좁은 골목 등 옛 정취가 그대로 살아있는 풍경이 특징입니다.\n\n관광객을 위한 카페, 찻집, 전통 음식점 등이 어우러져 있어 "역사 + 체험 + 여유"를 한 번에 경험할 수 있는 공간으로, 반나절 코스로 다녀오기 가장 좋은 수향마을 중 하나입니다.',
-                videoId: 'tDlq7uNc1SA', // Zhujiajiao boat
-                thumb: 'https://i.ytimg.com/vi/tDlq7uNc1SA/maxresdefault.jpg' // 고화질 썸네일
+                videoId: 'tDlq7uNc1SA', // Zhujiajiao boat ride - Embed Safe
+                thumb: 'https://img.youtube.com/vi/tDlq7uNc1SA/hqdefault.jpg'
             },
             'tianzifang': {
                 title: '티엔즈팡 (Tianzifang)',
@@ -579,7 +595,7 @@
             document.getElementById('modalTitle').innerText = data.title;
             document.getElementById('modalDesc').innerText = data.desc;
             
-            // 2. 비디오 처리 로직 (핵심: 썸네일 오버레이 적용)
+            // 2. 비디오 처리 로직
             const videoContainer = document.getElementById('videoContainer');
             videoContainer.innerHTML = ''; // 초기화
 
@@ -587,13 +603,16 @@
                 // 썸네일과 재생 버튼을 포함한 div 생성
                 const thumbnailDiv = document.createElement('div');
                 thumbnailDiv.className = 'video-thumbnail';
+                // THUMBNAIL ERROR FIX: 이미지가 로드되지 않을 경우를 대비한 스타일 조정
                 thumbnailDiv.style.backgroundImage = `url('${data.thumb}')`;
-                thumbnailDiv.innerHTML = '<div class="play-button"><i class="fas fa-play"></i></div>';
+                thumbnailDiv.style.backgroundColor = '#000'; // 이미지가 없을 때 검은 배경
+                thumbnailDiv.innerHTML = '<div class="play-button"></div>';
                 
                 // 클릭 시 아이프레임으로 교체하는 이벤트 리스너
+                // PC 재생 오류 해결을 위해 Autoplay + Mute + Playsinline + Rel=0 추가
                 thumbnailDiv.onclick = function() {
                     const iframe = document.createElement('iframe');
-                    iframe.setAttribute('src', `https://www.youtube.com/embed/${data.videoId}?autoplay=1&mute=1&playsinline=1&rel=0`);
+                    iframe.setAttribute('src', `https://www.youtube.com/embed/${data.videoId}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`);
                     iframe.setAttribute('frameborder', '0');
                     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                     iframe.setAttribute('allowfullscreen', 'true');
